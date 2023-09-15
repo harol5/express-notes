@@ -1,0 +1,9 @@
+2023/09/15	00:18:31	5c80fc33-6ea2-453c-b029-bb8f5c6c9d3f	GET	undefined	/new-page
+2023/09/15	00:20:49	d7169920-e5fc-4de5-a85d-5e2de4d345c0	GET	undefined	/
+2023/09/15	00:20:49	cdfa024e-cce7-44de-a6b5-ae89091d0dc5	GET	undefined	/index.js
+2023/09/15	00:24:17	ec4d6bdf-42ef-4936-8db7-b41e40f7489b	GET	undefined	/old-page
+2023/09/15	00:24:17	406861a2-f0c5-4fa2-b21a-f73ec4241ee1	GET	undefined	/new-page.html
+2023/09/15	00:26:03	ea7279b8-dfde-47df-aa96-3a82af4ae1a6	OPTIONS	https://harol5.github.io	/
+2023/09/15	00:26:03	0ceb864f-9b3f-4802-8234-20228002fee7	GET	https://harol5.github.io	/
+2023/09/15	00:34:14	8174912f-0c0e-451e-b2d5-3195483122da	OPTIONS	https://harol5.github.io	/
+2023/09/15	00:34:14	896cade1-d8d4-4534-a9e4-6bf3ad30fd0d	GET	https://harol5.github.io	/
