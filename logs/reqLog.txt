@@ -7,3 +7,13 @@
 2023/09/15	00:26:03	0ceb864f-9b3f-4802-8234-20228002fee7	GET	https://harol5.github.io	/
 2023/09/15	00:34:14	8174912f-0c0e-451e-b2d5-3195483122da	OPTIONS	https://harol5.github.io	/
 2023/09/15	00:34:14	896cade1-d8d4-4534-a9e4-6bf3ad30fd0d	GET	https://harol5.github.io	/
+2023/09/16	13:50:28	c8740a2c-d58e-42b5-88a8-54a1f648df69	GET	undefined	/
+2023/09/16	13:50:28	08dcbdd5-3c29-4c62-8150-f31451b0b4ad	GET	undefined	/index.js
+2023/09/16	13:50:28	6fd59f60-7917-4c7c-a6a8-fb2fc00f27c6	GET	undefined	/favicon.ico
+2023/09/16	13:51:45	908b1b8b-2d96-4042-90b4-f55cf1672e35	GET	undefined	/
+2023/09/16	13:52:44	b114f6ef-9b1a-4025-9b55-931d2a20cfba	GET	undefined	/
+2023/09/16	13:52:44	09407fd0-89fb-4adf-b856-018213bb5337	GET	undefined	/index.js
+2023/09/16	13:54:23	8e3d4b12-1b4c-4d48-b510-373ec3992dbd	GET	undefined	/harol
+2023/09/16	14:01:42	5ad4121a-6a38-4f51-b3d5-06e4353b3055	GET	undefined	/harol
+2023/09/16	14:01:47	33afb3f8-a714-4cdc-b284-ee7515014a01	GET	undefined	/
+2023/09/16	14:01:47	05d2a240-f37e-4fe7-91cb-aab47332830d	GET	undefined	/index.js

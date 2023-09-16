@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const { logger } = require("./middleware/logEvents");
+const errorHandler = require("./middleware/errorHandler");
 const port = process.env.Port || 9000;
 
 //----------------------------MIDDLEWARE----------------------//
@@ -10,13 +11,22 @@ const port = process.env.Port || 9000;
 //The "use" method adds middleware to all routes.
 // middleware lies between the request and the respond.
 // Code that runs before we handle the request and the respond.
+// Does not accept RegExp.
 
 //this is a custom middleware.(see middleware folder to see how to write -
 // a function that can be use to perform some middleware logic )
 app.use(logger);
 
 // Cross Origin Resource Sharing.
-app.use(cors());
+const whiteList = ["http://127.0.0.1:9000", "http://localhost:9000"];
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (whiteList.indexOf(origin) !== -1 || !origin) callback(null, true);
+    else callback(new Error("not allowed by CORS"));
+  },
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 
 //This handles form data (remenber that all the data input by the user-
 // is transform as the query string on the url as a collection of -
@@ -79,9 +89,15 @@ const three = (req, res) => {
 };
 app.get("/chain(.html)?", [one, two, three]);
 
-//handles the rest of the requests.
-app.get("/*", (req, res) => {
-  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+//handles the rest of the requests. "app.all" is use for routing
+app.all("*", (req, res) => {
+  res.status(404);
+  if (req.accepts("html"))
+    res.sendFile(path.join(__dirname, "views", "404.html"));
+  else if (req.accepts("json")) res.json({ error: "404 Not Found" });
+  else res.type("txt").send("404 Not Found");
 });
+
+app.use(errorHandler);
 
 app.listen(port, () => console.log(`app listening on port ${port}`));
