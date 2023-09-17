@@ -2,6 +2,7 @@ const path = require("path");
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const corsOptions = require("./config/corsOptions");
 const { logger } = require("./middleware/logEvents");
 const errorHandler = require("./middleware/errorHandler");
 const port = process.env.Port || 9000;
@@ -18,14 +19,6 @@ const port = process.env.Port || 9000;
 app.use(logger);
 
 // Cross Origin Resource Sharing.
-const whiteList = ["http://127.0.0.1:9000", "http://localhost:9000"];
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (whiteList.indexOf(origin) !== -1 || !origin) callback(null, true);
-    else callback(new Error("not allowed by CORS"));
-  },
-  optionsSuccessStatus: 200,
-};
 app.use(cors(corsOptions));
 
 //This handles form data (remenber that all the data input by the user-
@@ -36,58 +29,15 @@ app.use(express.urlencoded({ extended: false }));
 //This handle all json format data.
 app.use(express.json());
 
-//This serves static files (css,img).
-app.use(express.static(path.join(__dirname, "/public")));
+//This serves static files (css,img,js).
+app.use("/", express.static(path.join(__dirname, "/public")));
+app.use("/subdir", express.static(path.join(__dirname, "/public/subdir")));
 
 //---------------------------ROUTES--------------------------------//
 
-//The ^ means "star with". $ means "ends with". | means "or". (.html)? means optional.
-app.get("^/$|/index(.html)?", (req, res) => {
-  //res.send("hello world");
-  //res.sendFile("./views/index.html", { root: __dirname });
-  res.sendFile(path.join(__dirname, "views", "index.html"));
-});
-
-app.get("/page1(.html)?", (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "page1.html"));
-});
-
-app.get("/new-page(.html)?", (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "new-page.html"));
-});
-
-app.get("/old-page(.html)?", (req, res) => {
-  res.redirect(301, "/new-page.html");
-});
-
-//Route handlers.
-//with the third parameter "next" you can chain route handlers by just calling it. see below.
-//this relates to middleware.
-app.get(
-  "/hello(.html)?",
-  (req, res, next) => {
-    console.log("attemted to load hello");
-    //this will call the next callback function.
-    next();
-  },
-  (req, res) => {
-    res.send("hello world");
-  }
-);
-//OR!!
-const one = (req, res, next) => {
-  console.log("one");
-  next();
-};
-const two = (req, res, next) => {
-  console.log("two");
-  next();
-};
-const three = (req, res) => {
-  console.log("three");
-  res.send("chain routing handlers");
-};
-app.get("/chain(.html)?", [one, two, three]);
+app.use("/", require("./routes/root"));
+app.use("/subdir", require("./routes/subdir"));
+app.use("/notes", require("./routes/api/notes"));
 
 //handles the rest of the requests. "app.all" is use for routing
 app.all("*", (req, res) => {
