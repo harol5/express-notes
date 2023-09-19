@@ -128,3 +128,16 @@
 2023/09/17	15:58:17	98f8cd04-3494-4f37-bbff-d12125e9e54c	GET	undefined	/notes/1
 2023/09/17	16:20:33	f29b0356-bd87-493f-8ea9-2dd03e40ecc1	GET	undefined	/notes
 2023/09/17	16:23:53	78c37062-ba98-4329-bbe4-ba766795e5dc	GET	undefined	/notes/3
+2023/09/18	19:54:52	a1bf6193-551d-4627-bee7-d1c8ffafb50a	GET	undefined	/
+2023/09/18	19:54:52	1685d247-354c-4282-8af4-a7d180f834a0	GET	undefined	/index.css
+2023/09/18	19:54:52	9ef60f32-72d3-45d0-81d9-ee1c1670a786	GET	undefined	/index.js
+2023/09/18	19:54:56	029da721-bc56-4e98-833a-a46426f1a2f9	GET	undefined	/index.css
+2023/09/18	19:58:13	c6b5720e-0dff-4a18-b9ba-75f7e7a1ffb8	POST	undefined	/register
+2023/09/18	19:59:17	ce9e4736-9090-4016-8c44-640fa52b952d	POST	undefined	/register
+2023/09/18	20:00:13	df7f4ba4-01cd-4e46-aa0a-4dc150915d01	POST	undefined	/register
+2023/09/18	20:00:26	008bfcb9-44b7-4329-b312-4c08597af455	POST	undefined	/register
+2023/09/18	20:01:41	71f5b9b4-881a-41d8-bf12-800f02c3794b	POST	undefined	/register
+2023/09/18	20:02:22	e0d87fb5-a5e6-48da-8bf3-a6d3257d546f	POST	undefined	/register
+2023/09/18	20:03:08	50dac40e-b1ce-4f03-9a9d-accc6af08a48	POST	undefined	/register
+2023/09/18	20:16:23	e6309cf9-5126-44ff-9faf-f8132d7bd401	POST	undefined	/login
+2023/09/18	20:17:13	076d447e-5043-47fb-89ff-3c4391719e6a	POST	undefined	/login
