@@ -3,7 +3,6 @@ data.notes = require("../model/notes.json");
 
 const getAllNotes = (req, res) => {
   res.json(data.notes);
-  res.send(data.notes);
 };
 
 const createNote = (req, res) => {

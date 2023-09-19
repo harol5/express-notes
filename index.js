@@ -5,6 +5,8 @@ const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
 const { logger } = require("./middleware/logEvents");
 const errorHandler = require("./middleware/errorHandler");
+const verifyJWT = require("./middleware/verifyJWT");
+const cookieParser = require("cookie-parser");
 const port = process.env.Port || 9000;
 
 //----------------------------MIDDLEWARE----------------------//
@@ -29,6 +31,9 @@ app.use(express.urlencoded({ extended: false }));
 //This handle all json format data.
 app.use(express.json());
 
+//middleware for cookies.
+app.use(cookieParser());
+
 //This serves static files (css,img,js).
 app.use("/", express.static(path.join(__dirname, "/public")));
 app.use("/subdir", express.static(path.join(__dirname, "/public/subdir")));
@@ -38,6 +43,11 @@ app.use("/subdir", express.static(path.join(__dirname, "/public/subdir")));
 app.use("/", require("./routes/root"));
 app.use("/register", require("./routes/register"));
 app.use("/login", require("./routes/auth"));
+app.use("/logout", require("./routes/logout"));
+app.use("/refresh", require("./routes/refresh"));
+
+//all routes after the "verifyJWT" middleware will be require auth.
+app.use(verifyJWT);
 app.use("/subdir", require("./routes/subdir"));
 app.use("/notes", require("./routes/api/notes"));
 
