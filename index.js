@@ -50,6 +50,7 @@ app.use("/refresh", require("./routes/refresh"));
 app.use(verifyJWT);
 app.use("/subdir", require("./routes/subdir"));
 app.use("/notes", require("./routes/api/notes"));
+app.use("/users", require("./routes/api/users"));
 
 //handles the rest of the requests. "app.all" is use for routing
 app.all("*", (req, res) => {
