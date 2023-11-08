@@ -1,15 +1,23 @@
-const data = {};
-data.notes = require("../model/notes.json");
+const pool = require("../config/postgres");
 
-const getAllNotes = (req, res) => {
-  res.json(data.notes);
+const getAllNotes = async (req, res) => {
+  try {
+    const result = await pool.query("SELECT * FROM posts");
+    res.json(result.rows);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-const createNote = (req, res) => {
-  res.json({
-    title: req.body.title,
-    text: req.body.text,
-  });
+const createNote = async (req, res) => {
+  try {
+    await pool.query(
+      `INSERT INTO posts VALUES (default,'${req.body.title}','${req.body.content}')`
+    );
+    res.send("posts created");
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const updateNote = (req, res) => {

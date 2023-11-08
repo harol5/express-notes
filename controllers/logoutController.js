@@ -9,7 +9,7 @@ const userDB = {
 };
 
 const handleLogout = async (req, res) => {
-  // !!On client also delete the accessToken!!.
+  // !!On front-end code, also delete the accessToken!!.
 
   //check is cookie is on req.
   const cookies = req.cookies;

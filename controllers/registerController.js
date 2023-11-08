@@ -20,24 +20,32 @@ const handleNewUser = async (req, res) => {
       .json({ message: "Username and password are required" });
   }
 
-  //check for duplicate usernames in the DB.
+  //TO-DO!! re-write this logic to use an actual DB. - check for duplicate usernames in the DB.
   const duplicate = userDB.users.find((u) => u.username === user);
   if (duplicate)
     return res.status(409).json({ message: "username not availible" }); //conflict
 
-  //if passed checks, crete user.
+  //If passed checks, crete user.
   try {
-    // encrypt the password.
+    //encrypt the password.
     const hashedPws = await bcrypt.hash(pwd, 10);
-    //strore new user.
-    const newUser = { username: user, password: hashedPws };
+    //strore new user. all new users are initialize with "user" role.
+    const newUser = {
+      username: user,
+      roles: {
+        User: 2001,
+      },
+      password: hashedPws,
+    };
+
+    //TO-DO!! re-write this logic to use an actual DB. stores new user into the DB.
     userDB.setUsers([...userDB.users, newUser]);
     await fsPromises.writeFile(
       path.join(__dirname, "..", "model", "users.json"),
       JSON.stringify(userDB.users)
     );
 
-    console.log(userDB.users);
+    //TO-DO!! Re-direct user to login page after registered successfuly.
     res.status(201).json({ success: `New user ${user} created!` });
   } catch (err) {
     res.status(500).json({ message: err.message });
